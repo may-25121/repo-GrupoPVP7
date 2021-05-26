@@ -6,11 +6,17 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +24,15 @@ import org.springframework.stereotype.Component;
 @Table(name = "CLIENTES")
 @Component
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CLIENTE_ID")
+	private long id;
+	
 	@Column(name = "TIPO_DOCUMENTO", nullable = true)
 	private String tipoDocumento;
 	
-	@Id
 	@Column(name = "DNI", nullable = true)
 	private int nroDocumento;
 	
@@ -50,7 +61,10 @@ public class Cliente {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "FECHA_ULTIMA_COMPRA", nullable = true)
 	private LocalDate fechaUltimaCompra;
-	
+	 @Autowired
+	 @OneToOne(cascade = CascadeType.ALL)
+	 @JoinColumn(name = "CUENTA_ID")
+	private Cuenta cuenta;
 
 	public Cliente() {
 	}
@@ -67,6 +81,23 @@ public class Cliente {
 		this.codigoAreaTelefono = codigoAreaTelefono;
 		this.nroTelefono = nroTelefono;
 		this.fechaUltimaCompra = fechaUltimaCompra;
+	}
+	
+
+	public Cuenta getCuenta() {
+		return cuenta;
+	}
+
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getTipoDocumento() {

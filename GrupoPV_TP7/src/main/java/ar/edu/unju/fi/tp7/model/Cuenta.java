@@ -2,11 +2,27 @@ package ar.edu.unju.fi.tp7.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+@Entity
+@Table(name = "CUENTAS")
+@Component
 public class Cuenta {
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "CUENTA_ID")
 	private Long id;
+	@Column(name = "SALDO")
 	private double saldo;
+	@Column(name= "FECHA CREACION")
 	private LocalDate fechaCreacion;
+	@Column(name = "ESTADO")
 	private String estado;
 	
 	public Cuenta() {
