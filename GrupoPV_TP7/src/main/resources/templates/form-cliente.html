@@ -15,6 +15,7 @@
 					<h2 class="text-center mb-5 text-uppercase">Formulario de Cliente</h2>
 				</div>
 				<form class="col-sm-12 col-md-9 mb-3" th:action="@{/cliente/guardar}" th:method="post" th:object="${cliente}">
+				//hidden: archivo oculto
 				<input type="hidden" th:field"*{id} />
 				<input type="hidden" th:field"*{cuenta.id} />
 				<div class="p-5 mx-3 border">

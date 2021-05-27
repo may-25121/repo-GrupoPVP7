@@ -39,6 +39,7 @@
 								<td th:text="${c.codigoAreaTelefono} + '-' + ${c.nroTelefono}"></td>
 								<td th:text="${#temporals.format(c.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
 								<td align="left" >
+								//agregamos los botones de modificar y borrar
 								<td>
 								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-info">Modificar</a>
 								<a th:href ="@{cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
