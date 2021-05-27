@@ -39,6 +39,10 @@
 								<td th:text="${c.codigoAreaTelefono} + '-' + ${c.nroTelefono}"></td>
 								<td th:text="${#temporals.format(c.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
 								<td align="left" >
+								<td>
+								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-info">Modificar</a>
+								<a th:href ="@{cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
+								</td>
 									<span th:text="'-Tiempo transcurrido desde la ultima compra: ' + ${c.getTiempoUltimaCompra()}"></span><br>
 									<span th:text="'-Tiempo transcurrido en dias desde fecha nacimiento: ' + ${c.getTiempoTranscurridoFechaNacimiento()} +' dias'"></span><br>
 									<span th:text="'-Tiempo transcurrido hasta proximo cumpleaños: ' + ${c.getTiempoHastaCumple()}"></span><br>
