@@ -22,7 +22,7 @@ public class ClienteController {
 	private Cliente cliente;
 	
 	@Autowired
-	@Qualifier("clienteImp")
+	@Qualifier("clienteServiceMysql")
 	private IClienteService clienteService;
 	
 	@GetMapping("/menu")
@@ -35,13 +35,14 @@ public class ClienteController {
 		model.addAttribute("cliente",cliente);
 		return "form-cliente";
 	}
+	
 	@GetMapping("/cliente/modificar/{id}")
 	public String modificar(@PathVariable Long id,Model model ) {
-		List<Cliente>cliente = clienteService.getClientes();
-		model.addAttribute("clientes", cliente );
+	/*	List<Cliente>cliente = clienteService.getClientes();
+		model.addAttribute("clientes", cliente );*/
 		return  "form-cliente";
-		
 	}
+	
 	@GetMapping("/cliente/borrar/{id}")
 	public String borrar(@PathVariable Long id,Model model ) {
 		
@@ -59,9 +60,9 @@ public class ClienteController {
 	@GetMapping("/cliente/listado")
 	public ModelAndView getClienteListadoPage() {
 		ModelAndView model = new ModelAndView("clientes");
-		if(clienteService.getClientes()==null) {
-			clienteService.generarListaClientes();
-		}
+		//if(clienteService.getClientes()==null) {
+		//	clienteService.generarListaClientes();
+	//	}
 		model.addObject("clientes", clienteService.getClientes());
 		return model;
 	}
