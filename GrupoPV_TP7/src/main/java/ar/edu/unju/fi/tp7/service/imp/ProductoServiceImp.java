@@ -13,7 +13,7 @@ import ar.edu.unju.fi.tp7.service.IProductoService;
 
 
 
-@Service
+@Service("productoImp")
 public class ProductoServiceImp implements IProductoService{
 	
 	private static final Log LOGGER = LogFactory.getLog(ProductoServiceImp.class);

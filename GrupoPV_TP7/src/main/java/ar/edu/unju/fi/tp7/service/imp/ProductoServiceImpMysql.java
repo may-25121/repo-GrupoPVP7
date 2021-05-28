@@ -3,32 +3,36 @@ package ar.edu.unju.fi.tp7.service.imp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import ar.edu.unju.fi.tp7.model.Producto;
 import ar.edu.unju.fi.tp7.repository.IProductoDAO;
 import ar.edu.unju.fi.tp7.service.IProductoService;
 
+@Service("productoServiceMysql")
 public class ProductoServiceImpMysql implements IProductoService{
 	
 	@Autowired
 	IProductoDAO productoDAO;
+	
+	@Autowired
+	private Producto producto;
 
 	@Override
 	public Producto getProducto() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.producto;
 	}
 
 	@Override
 	public void addProducto(Producto producto) {
 		productoDAO.save(producto);
-		
 	}
 
 	@Override
 	public Producto getUltimoProducto() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Producto> productos = (List<Producto>) productoDAO.findAll();
+		Producto producto = productos.get(productos.size()-1);
+		return producto;
 	}
 
 	@Override
@@ -39,8 +43,8 @@ public class ProductoServiceImpMysql implements IProductoService{
 
 	@Override
 	public Producto searchProducto(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
+		Producto producto = productoDAO.findByCodigo(codigo);
+		return producto;
 	}
 
 }

@@ -14,17 +14,18 @@ public class CompraServiceImpMysql implements ICompraService{
 	
 	@Autowired
 	ICompraDAO compraDAO;
+	
+	@Autowired
+	private Compra compra;
 
 	@Override
 	public Compra getCompra() {
-		
-		return null;
+		return this.compra;
 	}
 
 	@Override
 	public void agregarCompra(Compra compra) {
 		compraDAO.save(compra);
-		
 	}
 
 	@Override

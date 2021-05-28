@@ -12,7 +12,7 @@ import ar.edu.unju.fi.tp7.model.Compra;
 import ar.edu.unju.fi.tp7.service.ICompraService;
 
 
-@Service("compraUtilService")
+@Service("compraImp")
 public class CompraServiceImp implements ICompraService {
 
 	@Autowired

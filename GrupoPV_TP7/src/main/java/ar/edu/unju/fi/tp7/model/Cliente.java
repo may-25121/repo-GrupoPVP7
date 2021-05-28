@@ -30,37 +30,38 @@ public class Cliente {
 	@Column(name = "CLIENTE_ID")
 	private long id;
 	
-	@Column(name = "TIPO_DOCUMENTO", nullable = true)
+	@Column(name = "TIPO_DOCUMENTO")
 	private String tipoDocumento;
 	
-	@Column(name = "DNI", nullable = true)
+	@Column(name = "DNI")
 	private int nroDocumento;
 	
-	@Column(name = "NOMBRE_APELLIDO", nullable = true) 
+	@Column(name = "NOMBRE_APELLIDO") 
 	private String nombreApellido;
 	
-	@Column(name = "EMAIL", nullable = true)
+	@Column(name = "EMAIL")
 	private String email;
 	
-	@Column(name = "PASS", nullable = true)
+	@Column(name = "PASS")
 	private String password;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@Column(name = "FECHA_NAC", nullable = true)
+	@Column(name = "FECHA_NAC")
 	private LocalDate fechaNacimiento;
 	
-	@Column(name = "EDAD", nullable = true)
+	@Column(name = "EDAD")
 	private int edad;
 	
-	@Column(name = "COD_AREA", nullable = true)
+	@Column(name = "COD_AREA")
 	private int codigoAreaTelefono;
 	
-	@Column(name = "TELEFONO", nullable = true)
+	@Column(name = "TELEFONO")
 	private int nroTelefono;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@Column(name = "FECHA_ULTIMA_COMPRA", nullable = true)
+	@Column(name = "FECHA_ULTIMA_COMPRA")
 	private LocalDate fechaUltimaCompra;
+	
 	 @Autowired
 	 @OneToOne(cascade = CascadeType.ALL)
 	 @JoinColumn(name = "CUENTA_ID")
