@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -31,7 +32,7 @@ public class Cuenta {
 	
 	@Column(name = "ESTADO")
 	private String estado;
-	
+	@Autowired
 	@OneToOne(mappedBy = "cuenta", fetch = FetchType.LAZY)
 	private Cliente cliente;
 	
