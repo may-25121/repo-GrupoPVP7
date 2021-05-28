@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp7.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,10 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tp7.model.Cliente;
+import ar.edu.unju.fi.tp7.model.Compra;
 import ar.edu.unju.fi.tp7.service.IClienteService;
+import ar.edu.unju.fi.tp7.service.ICompraService;
+import ar.edu.unju.fi.tp7.service.IProductoService;
 
 @Controller
 public class ClienteController {
@@ -24,6 +29,11 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("clienteServiceMysql")
 	private IClienteService clienteService;
+	
+	@Autowired
+	@Qualifier("compraServiceMysql")
+	private ICompraService compraService;
+
 	
 	@GetMapping("/menu")
 	public String getPrincipalPage() {
@@ -36,13 +46,15 @@ public class ClienteController {
 		return "form-cliente";
 	}
 	
-	@GetMapping("/cliente/modificar/{id}")
-	public String modificar(@PathVariable Long id,Model model ) {
-	/*	List<Cliente>cliente = clienteService.getClientes();
-		model.addAttribute("clientes", cliente );*/
-		return  "form-cliente";
+	/*@GetMapping("/cliente/editar/{id}")
+	public ModelAndView getEditarPage(@PathVariable(value = "id")Long id) {
+		ModelAndView modelView = new ModelAndView("nuevacuenta");
+		Optional<Cliente> cliente = clienteService.getClientePorId(id);
+		modelView.addObject("cliente", cliente);
+		
+		
 	}
-	
+	*/
 	@GetMapping("/cliente/borrar/{id}")
 	public String borrar(@PathVariable Long id,Model model ) {
 		
@@ -66,6 +78,4 @@ public class ClienteController {
 		model.addObject("clientes", clienteService.getClientes());
 		return model;
 	}
-	
-
 }

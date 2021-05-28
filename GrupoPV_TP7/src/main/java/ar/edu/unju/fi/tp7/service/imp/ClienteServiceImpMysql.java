@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.tp7.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,12 @@ public class ClienteServiceImpMysql implements IClienteService{
 	public void generarListaClientes() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Optional<Cliente> getClientePorId(Long id) {
+		Optional<Cliente>cliente = clienteDAO.findById(id);
+		return cliente;
 	}
 
 }

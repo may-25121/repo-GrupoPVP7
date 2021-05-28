@@ -2,6 +2,7 @@ package ar.edu.unju.fi.tp7.service.imp;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -52,6 +53,12 @@ public class ClienteServiceImp implements IClienteService{
 			generarListaClientes();
 		}
 		clientes.add(cliente);
+	}
+
+	@Override
+	public Optional<Cliente> getClientePorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

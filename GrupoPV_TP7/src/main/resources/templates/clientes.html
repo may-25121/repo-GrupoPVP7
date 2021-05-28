@@ -41,7 +41,7 @@
 								<td align="left" >
 								//agregamos los botones de modificar y borrar
 								<td>
-								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-info">Modificar</a>
+								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-warning">Editar</a>
 								<a th:href ="@{cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
 								</td>
 									<span th:text="'-Tiempo transcurrido desde la ultima compra: ' + ${c.getTiempoUltimaCompra()}"></span><br>
