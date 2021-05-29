@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Entity
@@ -27,6 +28,7 @@ public class Cuenta {
 	@Column(name = "SALDO")
 	private double saldo;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name= "FECHA_CREACION")
 	private LocalDate fechaCreacion;
 	
@@ -64,7 +66,8 @@ public class Cuenta {
 	}
 
 	public LocalDate getFechaCreacion() {
-		return fechaCreacion;
+		LocalDate hoy = LocalDate.now();
+		return hoy;
 	}
 
 	public void setFechaCreacion(LocalDate fechaCreacion) {

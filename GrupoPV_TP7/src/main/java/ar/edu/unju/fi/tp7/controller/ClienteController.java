@@ -65,6 +65,8 @@ public class ClienteController {
 	@PostMapping("/cliente/guardar")
 	public ModelAndView guardarCliente(@ModelAttribute("cliente")Cliente cliente) {
 		ModelAndView model= new ModelAndView("clientes");
+		cliente.setEdad(cliente.getEdad());
+		cliente.getCuenta().setFechaCreacion(cliente.getCuenta().getFechaCreacion());
 		clienteService.guardarCliente(cliente);
 		model.addObject("clientes", clienteService.getClientes());
 		return model;

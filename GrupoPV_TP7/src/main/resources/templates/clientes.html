@@ -15,7 +15,7 @@
 					<h2 class="text-center text-uppercase mb-5">Listado de Clientes</h2>
 				</div>
 				<div class="table-responsive col-sm-12 col-md-9 mb-3">
-					<table class="table table-striped" border="1" >
+					<table class="table  text-nowrap" border="1" >
 						<thead>
 							<tr>
 								<th scope="col">Tipo Doc.</th>
@@ -55,8 +55,8 @@
 								<td th:text="${c.cuenta.estado}"></td>-->
 								
 								<td>
-								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-warning">Editar</a>
-								<a th:href ="@{cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
+								<a th:href ="@{/cliente/Editar/}+${c.id}"  class= "btn btn-warning">Editar</a>
+								<a th:href ="@{/cliente/Borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
 								</td>
 							</tr>	
 						</tbody>
