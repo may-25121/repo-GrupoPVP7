@@ -17,6 +17,8 @@ import ar.edu.unju.fi.tp7.service.IProductoService;
 public class CompraController {
 	private static final Log LOGGER = LogFactory.getLog(CompraController.class);
 	
+	@Autowired
+	private Compra compra;
 	
 	@Autowired
 	@Qualifier("compraServiceMysql")
@@ -40,11 +42,10 @@ public class CompraController {
 	public String getgetCompraResultadoPage(Model model, @RequestParam(name="codigo") String codigo, @RequestParam(name="cantidad") String cantidad) {
 		LOGGER.info("CONTROLLER: CompraController con /compra/guardar invoca al metodo Get");
 		LOGGER.info("METHOD: getCompraResultadoPage() -- PARAMS: compra '"+codigo+"' codigo '"+cantidad);
-		LOGGER.info("RESULT: Se visualiza la página resultado02.html mostrando un mensaje que certifica que los datos de la compra se guado correctamente");		
-		Compra compra=new Compra();
-		compra.setId(this.compraService.obtenerCompras().size()+1);
-		compra.setCantidad(Integer.valueOf(cantidad));
-		compra.setProducto(this.productoService.searchProducto(Integer.valueOf(codigo)));
+		LOGGER.info("RESULT: Se visualiza la página resultado02.html mostrando un mensaje que certifica que los datos de la compra se guado correctamente");
+		this.compra.setCantidad(Integer.valueOf(cantidad));
+		this.compra.setProducto(this.productoService.searchProducto(Integer.valueOf(codigo)));
+		this.compra.setTotal(this.compra.getTotal());
 		compraService.agregarCompra(compra);
 		return "resultado02";
 	}

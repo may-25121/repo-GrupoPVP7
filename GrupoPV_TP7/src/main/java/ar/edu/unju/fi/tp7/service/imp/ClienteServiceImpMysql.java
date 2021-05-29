@@ -15,9 +15,6 @@ public class ClienteServiceImpMysql implements IClienteService{
 	
 	@Autowired
 	IClienteDAO clienteDAO;
-	
-	@Autowired
-	private Cliente cliente;
 
 	@Override
 	public void guardarCliente(Cliente cliente) {
@@ -48,9 +45,12 @@ public class ClienteServiceImpMysql implements IClienteService{
 	}
 
 	@Override
+	public void deleteClientePorId(Long id) {
+		clienteDAO.deleteById(id);
+/*
 	public void borrarCliente(Long id) {
 		clienteDAO.deleteById(id);
 		
-	}
+	}*/
 
 }
