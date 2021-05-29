@@ -30,10 +30,6 @@ public class ClienteController {
 	@Qualifier("clienteServiceMysql")
 	private IClienteService clienteService;
 	
-	@Autowired
-	@Qualifier("compraServiceMysql")
-	private ICompraService compraService;
-
 	
 	@GetMapping("/menu")
 	public String getPrincipalPage() {
@@ -46,19 +42,24 @@ public class ClienteController {
 		return "form-cliente";
 	}
 	
-	/*@GetMapping("/cliente/editar/{id}")
+	@GetMapping("/cliente/Editar/{id}")
 	public ModelAndView getEditarPage(@PathVariable(value = "id")Long id) {
-		ModelAndView modelView = new ModelAndView("nuevacuenta");
+		ModelAndView modelView = new ModelAndView("form-cliente");
 		Optional<Cliente> cliente = clienteService.getClientePorId(id);
 		modelView.addObject("cliente", cliente);
+		return modelView;
 		
 		
 	}
-	*/
-	@GetMapping("/cliente/borrar/{id}")
-	public String borrar(@PathVariable Long id,Model model ) {
+	
+	@GetMapping("/cliente/Borrar/{id}")
+	public ModelAndView getBorrarPage(@PathVariable(value = "id")Long id) {
+		ModelAndView modelView = new ModelAndView("redirect:/cliente/listar");
+		clienteService.borrarCliente(id);
+		return modelView;
 		
-		return  "clientes";
+		
+	
 	}
 	
 	@PostMapping("/cliente/guardar")

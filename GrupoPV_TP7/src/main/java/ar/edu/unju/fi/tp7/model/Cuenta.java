@@ -27,7 +27,7 @@ public class Cuenta {
 	@Column(name = "SALDO")
 	private double saldo;
 	
-	@Column(name= "FECHA CREACION")
+	@Column(name= "FECHA_CREACION")
 	private LocalDate fechaCreacion;
 	
 	@Column(name = "ESTADO")
