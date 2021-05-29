@@ -30,8 +30,14 @@ public class ProductoServiceImpMysql implements IProductoService{
 
 	@Override
 	public Producto getUltimoProducto() {
+		Producto producto;
 		List<Producto> productos = (List<Producto>) productoDAO.findAll();
-		Producto producto = productos.get(productos.size()-1);
+		int indice=productos.size()-1;
+		if (indice>-1) {
+			producto = productos.get(indice);
+		}else {
+			producto=this.producto;
+		}
 		return producto;
 	}
 
