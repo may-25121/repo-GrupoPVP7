@@ -47,24 +47,10 @@ public class ClienteController {
 	
 	@GetMapping("/cliente/borrar/{id}")
 	public String getBorrarPage(@PathVariable Long id, Model model) {
-		clienteService.deleteClientePorId(id);
-		return "redirect:/cliente/listado";
-/*
-	@GetMapping("/cliente/Editar/{id}")
-	public ModelAndView getEditarPage(@PathVariable(value = "id")Long id) {
-		ModelAndView modelView = new ModelAndView("form-cliente");
-		Optional<Cliente> cliente = clienteService.getClientePorId(id);
-		modelView.addObject("cliente", cliente);
-		return modelView;
-	}
-	
-	@GetMapping("/cliente/Borrar/{id}")
-	public ModelAndView getBorrarPage(@PathVariable(value = "id")Long id) {
-		ModelAndView modelView = new ModelAndView("redirect:/cliente/listar");
 		clienteService.borrarCliente(id);
-		return modelView;
-	}*/
-  
+		return "redirect:/cliente/listado";
+	}
+
 	@PostMapping("/cliente/guardar")
 	public ModelAndView guardarCliente(@ModelAttribute("cliente")Cliente cliente) {
 		ModelAndView model= new ModelAndView("clientes");
