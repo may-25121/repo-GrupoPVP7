@@ -61,4 +61,10 @@ public class ClienteServiceImp implements IClienteService{
 		return null;
 	}
 
+	@Override
+	public void deleteClientePorId(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

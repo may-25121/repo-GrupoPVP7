@@ -1,6 +1,5 @@
 package ar.edu.unju.fi.tp7.controller;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.tp7.model.Cliente;
-import ar.edu.unju.fi.tp7.model.Compra;
 import ar.edu.unju.fi.tp7.service.IClienteService;
 import ar.edu.unju.fi.tp7.service.ICompraService;
-import ar.edu.unju.fi.tp7.service.IProductoService;
 
 @Controller
 public class ClienteController {
@@ -46,24 +42,24 @@ public class ClienteController {
 		return "form-cliente";
 	}
 	
-	/*@GetMapping("/cliente/editar/{id}")
-	public ModelAndView getEditarPage(@PathVariable(value = "id")Long id) {
-		ModelAndView modelView = new ModelAndView("nuevacuenta");
+	@GetMapping("/cliente/editar/{id}")
+	public String getEditarPage(@PathVariable Long id, Model model) {
 		Optional<Cliente> cliente = clienteService.getClientePorId(id);
-		modelView.addObject("cliente", cliente);
-		
-		
+		model.addAttribute("cliente", cliente);
+		return "form-cliente";
 	}
-	*/
+	
 	@GetMapping("/cliente/borrar/{id}")
-	public String borrar(@PathVariable Long id,Model model ) {
-		
-		return  "clientes";
+	public String getBorrarPage(@PathVariable Long id, Model model) {
+		clienteService.deleteClientePorId(id);
+		return "redirect:/cliente/listado";
 	}
 	
 	@PostMapping("/cliente/guardar")
 	public ModelAndView guardarCliente(@ModelAttribute("cliente")Cliente cliente) {
 		ModelAndView model= new ModelAndView("clientes");
+		cliente.setEdad(cliente.getEdad());
+		cliente.getCuenta().setFechaCreacion(cliente.getCuenta().getFechaCreacion());
 		clienteService.guardarCliente(cliente);
 		model.addObject("clientes", clienteService.getClientes());
 		return model;
@@ -72,9 +68,6 @@ public class ClienteController {
 	@GetMapping("/cliente/listado")
 	public ModelAndView getClienteListadoPage() {
 		ModelAndView model = new ModelAndView("clientes");
-		//if(clienteService.getClientes()==null) {
-		//	clienteService.generarListaClientes();
-	//	}
 		model.addObject("clientes", clienteService.getClientes());
 		return model;
 	}

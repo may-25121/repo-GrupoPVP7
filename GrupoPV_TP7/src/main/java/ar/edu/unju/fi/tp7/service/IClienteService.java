@@ -13,6 +13,7 @@ public interface IClienteService {
 	public List<Cliente>getClientes();
 	public void generarListaClientes();
 	public Optional<Cliente>getClientePorId(Long id);
+	public void deleteClientePorId(Long id);
 	
 	
 
