@@ -27,6 +27,11 @@
 								<th scope="col">Fecha de ultima compra</th>
 								<th scope="col">Datos adicionales</th>
 								<th  scope="col">Opciones</th>
+
+						  	<!--  <th scope="col">Saldo</th>
+								<th scope="col">Fecha creacion</th>
+								<th scope="col">Estado</th> -->							
+
 							</tr>
 						</thead>
 						
@@ -40,12 +45,24 @@
 								<td th:text="${c.codigoAreaTelefono} + '-' + ${c.nroTelefono}"></td>
 								<td th:text="${#temporals.format(c.fechaUltimaCompra,'dd/MM/yyyy')}"></td>
 								<td align="left" >
+
 									<span th:text="'-Tiempo transcurrido desde la ultima compra: ' + ${c.getTiempoUltimaCompra()}"></span><br>
 									<span th:text="'-Tiempo transcurrido en dias desde fecha nacimiento: ' + ${c.getTiempoTranscurridoFechaNacimiento()} +' dias'"></span><br>
 									<span th:text="'-Tiempo transcurrido hasta proximo cumpleaños: ' + ${c.getTiempoHastaCumple()}"></span><br>
 								</td>
+
 								<td><a th:href ="@{/cliente/editar/}+${c.id}"  class= "btn btn-warning">Editar</a>
 									<a th:href ="@{/cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a></td>
+                
+								<!-- <td th:text="${c.cuenta.saldo}"></td>
+								  <td th:text="${c.cuenta.fechaCreacion}"></td>
+								<td th:text="${c.cuenta.estado}"></td>
+								
+								<td>
+								<a th:href ="@{cliente/modificar/}+${c.id}"  class= "btn btn-warning">Editar</a>
+								<a th:href ="@{cliente/borrar/}+${c.id}"  class= "btn btn-danger">Borrar</a>
+								</td> -->
+                
 							</tr>	
 						</tbody>
 					</table>
