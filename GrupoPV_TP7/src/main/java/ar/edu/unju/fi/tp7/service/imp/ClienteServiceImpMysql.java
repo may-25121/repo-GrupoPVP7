@@ -44,13 +44,9 @@ public class ClienteServiceImpMysql implements IClienteService{
 		return cliente;
 	}
 
-	@Override
-	public void deleteClientePorId(Long id) {
-		clienteDAO.deleteById(id);
-/*
 	public void borrarCliente(Long id) {
 		clienteDAO.deleteById(id);
 		
-	}*/
+	}
 
 }
