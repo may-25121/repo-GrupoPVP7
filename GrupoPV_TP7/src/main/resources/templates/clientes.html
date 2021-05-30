@@ -50,9 +50,9 @@
 								<span
 								th:text="'-Tiempo transcurrido hasta proximo cumpleaños: ' + ${c.getTiempoHastaCumple()}"></span><br>
 							</td>
-							<td align="left"><span th:text="${c.cuenta.saldo}"></span><br>
-								<span th:text="${c.cuenta.fechaCreacion}"></span><br> <span
-								th:text="${c.cuenta.estado}"></span><br></td>
+							<td align="left"><span th:text="'Saldo: ' + ${c.cuenta.saldo}"></span><br>
+								<span th:text="'Fecha de creación: ' + ${#temporals.format(c.cuenta.fechaCreacion,'dd/MM/yyyy') }"></span><br> <span
+								th:text="'Estado: ' + ${c.cuenta.estado}"></span><br></td>
 
 							<td><a th:href="@{/cliente/editar/}+${c.id}"
 								class="btn btn-warning">Editar</a> <a
